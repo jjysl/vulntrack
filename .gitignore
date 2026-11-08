@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+data/
+*.db
+*.db-*
+.env
+*.pem
+*.key
+requirements-lock.txt

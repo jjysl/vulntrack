@@ -1,0 +1,21 @@
+[Unit]
+Description=VulnTrack API
+After=network.target
+
+[Service]
+User=vulntrack
+Group=vulntrack
+WorkingDirectory=/opt/vulntrack
+EnvironmentFile=/etc/vulntrack.env
+ExecStart=/opt/vulntrack/.venv/bin/uvicorn main:app --host 127.0.0.1 --port 8000 --workers 1 --proxy-headers --forwarded-allow-ips=127.0.0.1
+Restart=on-failure
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/vulntrack
+
+[Install]
+WantedBy=multi-user.target
